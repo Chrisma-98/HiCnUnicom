@@ -9,20 +9,20 @@ export PATH
 alias curl='curl -m 10'
 
 # user info: change them to yours or use parameters instead.
-username="$1"
-password="$2"
+username=""
+password=""
 
 # 联通APP版本
 unicom_version=7.0402
 
 # deviceId: 随机IMEI
-deviceId=$(shuf -i 123456789012345-987654321012345 -n 1)
+deviceId=acf704b04f0c76da27503f2712be371c7c012f054ab9bc1c1ec2555631330105
 
 # 安卓手机端APP登录过的使用这个UA
-UA="Mozilla/5.0 (Linux; Android 6.0.1; oneplus a5010 Build/V417IR; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/52.0.2743.100 Mobile Safari/537.36; unicom{version:android@$unicom_version,desmobile:$username};devicetype{deviceBrand:Oneplus,deviceModel:oneplus a5010}"
+#UA="Mozilla/5.0 (Linux; Android 6.0.1; oneplus a5010 Build/V417IR; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/52.0.2743.100 Mobile Safari/537.36; unicom{version:android@$unicom_version,desmobile:$username};devicetype{deviceBrand:Oneplus,deviceModel:oneplus a5010}"
 
 # 苹果手机端APP登录过的使用这个UA
-#UA="ChinaUnicom4.x/176 CFNetwork/1121.2.2 Darwin/19.2.0"
+UA="ChinaUnicom4.x/176 CFNetwork/1121.2.2 Darwin/19.2.0"
 
 # workdir
 workdir="/root/CnUnicom_$username/"
@@ -65,14 +65,14 @@ isRemberPwd=true
 &mobile=$(urlencode $crypt_username)
 &yw_code=
 &timestamp=$(date +%Y%m%d%H%M%S)
-&appId=db5c52929cc2d7f5c46272487e926aebfb82b3bad6b9cd07f1eb99b6a6f34a90
+&appId=d82ac3821b50e6f05f6c684d27d252a5fe3ec3be8b823c89b62153bde023cfe856a8124828695d6735e8a2f0343841868563306020dbd5dc049eabcac5a6ba2527e0af066eea037c8d2c85ba0aae195b15317e0db9fc205f0d6da5d82fbb8681
 &keyVersion=1
-&deviceBrand=Oneplus
+&deviceBrand=iphone
 &pip=10.0.$(shuf -i 1-255 -n 1).$(shuf -i 1-255 -n 1)
 &provinceChanel=general
 &version=android%40$unicom_version
-&deviceModel=oneplus%20a5010
-&deviceOS=android6.0.1
+&deviceModel=iPhone
+&deviceOS=11.4.1
 &deviceCode=$deviceId
 EOF
 
@@ -89,12 +89,11 @@ EOF
     fi
 }
 
-function openChg() {
+#function openChg() {
     # 每月一号办理解除40G封顶业务
-    [[ "$(date "+%d")" == "01" ]] || return 0
-    echo; echo $(date) starting dingding OpenChg...
-    curl -sA "$UA" -b $workdir/cookie --data "querytype=02&opertag=0" "https://m.client.10010.com/mobileService/businessTransact/serviceOpenCloseChg.htm" >/dev/null
-}
+#    [[ "$(date "+%d")" == "01" ]] || return 0
+#    echo; echo $(date) starting dingding OpenChg...
+ #   curl -sA "$UA" -b $workdir/cookie --data "querytype=02&opertag=0" "https://m.client.10010.com/mobileService/businessTransact/serviceOpenCloseChg.htm" >/dev/null}
 
 function membercenter() {
     echo; echo $(date) starting membercenter...
