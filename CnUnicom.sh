@@ -9,8 +9,8 @@ export PATH
 alias curl='curl -m 10'
 
 # user info: change them to yours or use parameters instead.
-username=""
-password=""
+username="17630631630"
+password="760303633"
 
 # 联通APP版本
 unicom_version=7.0402
